@@ -1,0 +1,20 @@
+ <!-- *ngFor="let value of advertisementList" -->
+  <div class="container">
+<mat-card class="example-card bg-info mt-4" *ngFor="let value of advertisementList">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{value.category}}</mat-card-title>
+      <mat-card-subtitle>{{value.title}}</mat-card-subtitle>
+      <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    {{value.description}}
+  </mat-card-content>
+  <mat-card-footer class="">
+    <button mat-fab color="primary" class="btn-sm" aria-label="Example icon button with a delete icon" (click)="edit(value)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-footer>
+</mat-card>
+</div>

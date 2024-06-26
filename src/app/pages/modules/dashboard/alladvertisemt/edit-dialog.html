@@ -1,0 +1,26 @@
+<div class="container p-4 bg-light">
+  <h1 class="text-center">Edit Advertisement</h1>
+    <form>
+        <div class="form-group p-2">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="InputTitle" [(ngModel)]="data.editValue.title"  name ="title"  aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="form-group p-2">
+          <label for="exampleInputPassword1">Price</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="data.editValue.price" name="price"  placeholder="Price">
+        </div>
+        <div class="form-group p-2">
+          <label for="InputCategory">Category</label>
+          <input type="text" class="form-control" id="InputCategory" name="category"  [(ngModel)]="data.editValue.category" placeholder="Category">
+        </div>
+        <div class="form-group p-2">
+          <label for="InputDescription">Description</label>
+          <input type="text" class="form-control" id="InputDescription" name="description" [(ngModel)]="data.editValue.description"  placeholder="Description">
+        </div>
+        
+      <br>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary" (click)="update()">Post</button>
+        </div>
+      </form>
+</div>

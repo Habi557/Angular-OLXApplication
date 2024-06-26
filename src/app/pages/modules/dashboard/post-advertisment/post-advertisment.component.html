@@ -1,0 +1,25 @@
+<div class="container col-xs-6 col-lg-8 bg-light">
+    <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="InputTitle"  name ="title" [(ngModel)]="advertise.title" aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Price</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" name="price" [(ngModel)]="advertise.price" placeholder="Price">
+        </div>
+        <div class="form-group">
+          <label for="InputCategory">Category</label>
+          <input type="text" class="form-control" id="InputCategory" name="category" [(ngModel)]="advertise.category" placeholder="Category">
+        </div>
+        <div class="form-group">
+          <label for="InputDescription">Description</label>
+          <input type="text" class="form-control" id="InputDescription" name="description" [(ngModel)]="advertise.description" placeholder="Description">
+        </div>
+        
+      <br>
+      <div class="text-center">
+        <button type="button" (click)="addAdvertise()"class="btn btn-primary">Post</button>
+        </div>
+      </form>
+</div>
