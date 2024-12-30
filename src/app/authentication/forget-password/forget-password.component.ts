@@ -8,7 +8,7 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent {
-placeHolder: String="Enter Username";
+placeHolder: String="Enter Email";
 inputText:any;
 buttionDisable: boolean=true;
 otpFlag:boolean= true;
@@ -18,7 +18,7 @@ otp:Number
   constructor(private loginService: LoginService, private router: Router){}
  
 
-checkUserName() {
+checkEmail() {
   this.placeHolder="Enter OTP";
   this.spinner=true;
   this.loginService.checkUserName(this.inputText).subscribe(
@@ -36,24 +36,32 @@ checkUserName() {
       error:(err)=>{
         console.log("error");
         this.invalidEmail=false;
-        this.otpFlag=true
+        this.otpFlag=true;
+        this.spinner=false;
+       alert("Incorrect Email");
       }
     }
   )
 }
-verifyEmail() {
-  console.log("test");
-  this.loginService.validateOtp(localStorage.getItem("email") ||'{}',this.inputText).subscribe({
+verifyOtp() {
+  this.spinner=true;
+    this.loginService.validateOtp(localStorage.getItem("email") ||'{}',this.inputText).subscribe({
     next:(response)=>{
+      this.placeHolder="Enter New Password";
+      this.spinner=false;
+
+
        console.log(response);
     },
     error:(err)=>{
-
+      this.spinner=false;
+       alert("Incorrect OTP");
     }
   })
 }
 back(){
   this.router.navigateByUrl('/login');
 }
+
 
 }

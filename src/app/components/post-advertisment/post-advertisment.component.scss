@@ -1,0 +1,18 @@
+.container {
+    max-width: 600px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    color: #007bff;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  small{
+    color: red;
+    font-weight: bold;
+  }

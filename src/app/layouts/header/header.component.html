@@ -1,15 +1,4 @@
-<!-- <div class>
-<ul>
-    <li><a routerLink="dashboard/post">Post Advertisement</a></li>
-    <li><a routerLink="dashboard/alladvertisment">Show All Advertisement</a></li>
-    <li class="right"><a routerLink="" (click)="logout()">Logout</a></li>
-</ul>
-</div>
-
-
-
- -->
-
+<!-- <div class="d-flex justify-content-center">
 
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/dashboard">Advertisement</a>
@@ -27,9 +16,70 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="" (click)="logout()">Logout</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </nav>
+</div>  -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/">OLX</a>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-container w-50">
+
+    <input type="text" [(ngModel)]="searchText"  #serachdata (keyup)="keywordSearch(serachdata.value)" placeholder="Search..." class="search-box"
+      autocomplete="off" />
+  
+    <ul *ngIf="filteredResults.length>0" class="dropdown">
+      <li *ngFor="let result of filteredResults" (click)="selecteItem(result)">{{result.title}}</li>
+    </ul>
+  
+  </div>
+
+  <!-- Location Selector -->
+  <!-- <div class="navbar-location">
+    <input
+      type="text"
+      placeholder="Enter location"
+      [(ngModel)]="location"
+    />
+    <button (click)="onLocationSelect()">
+      <i class="material-icons">location_on</i>
+    </button>
+  </div> -->
+
+  <!-- Category Dropdown -->
+  <!-- <div class="navbar-links">
+    <select [(ngModel)]="selectedCategory">
+      <option value="" disabled>Select Category</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div> -->
+
+  <!-- Authentication Links -->
+  <div class="navbar-actions">
+    <!-- <div *ngIf="isLoggedIn" class="user-menu">
+      <button (click)="toggleUserMenu()">
+        <i class="material-icons">person</i>
+      </button>
+      <div class="dropdown-menu" *ngIf="showUserMenu">
+        <a routerLink="/profile">Profile</a>
+        <a routerLink="/my-ads">My Ads</a>
+        <a routerLink="/saved-items">Saved Items</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div> -->
+
+    <!-- Post Ad Button -->
+    <button class="post-ad-btn" (click)="postAd()">Post Ad</button>
+    <button class="post-ad-btn" (click)="logout()">Logout</button>
+
+  </div>
+</nav>
+
+
+
+

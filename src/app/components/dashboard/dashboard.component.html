@@ -1,0 +1,17 @@
+
+<h1>Dashboard</h1>
+<div class="flex-container">
+    <div class="flex-item card cursor-pointer"  *ngFor="let result of listOfAdvertisments" (click)="iteamClicked(result)">
+        <img class="card-img-top" [src]="result.photo" alt="Card image cap">
+        <!-- <img class="card-img-top" [src]="result.photo!=null ? 'data:image/jpg;base64,'+result.photo:'https://i.imgur.com/26NFGVH.jpeg'" alt="Dynamic Image"> -->
+        <div class="card-body">
+          <h3>&#8377;{{result.price}}</h3>
+          <p class="card-text">{{result.title}}</p>
+        </div>  
+    </div>
+  </div>
+  <div class="loadMore d-flex mt-3">
+    <button type="button" class="btn btn-outline-dark" (click)="loadMore()" [hidden]="!(listOfAdvertisments.length>0)">Load More</button>
+    <button type="button" class="btn btn-outline-dark" (click)="loadMore()" [hidden]="(listOfAdvertisments.length>0)">Back</button>
+
+  </div>

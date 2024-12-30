@@ -1,11 +1,12 @@
 <form (ngSubmit)="login()" #formvalid="ngForm"> 
+  
     <mat-card>
       <h1>Login</h1>
       <mat-card-content>
         <p>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" color="primary">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Username" name="userName" [(ngModel)]="data.userName" required #userName="ngModel" minlength="3"> 
+            <input matInput placeholder="Username" name="userName" [(ngModel)]="data.id" required #userName="ngModel" minlength="3" > 
             <mat-error *ngIf="userName.errors?.['required']"> Manditory field</mat-error>
             <mat-error *ngIf="userName.errors?.['minlength']">Min Length</mat-error>
 
@@ -21,7 +22,7 @@
       <div class="padding-10px">
         
       <button type="submit"  mat-raised-button color="primary" [disabled]="!formvalid.valid">Login</button>
-      <button type="reset" mat-raised-button color="primary">Reset</button>
+      <button type="reset" mat-raised-button color="primary" [disabled]="data.isDisable"></button>
       <div>
         <a routerLink="/forgetpassword" class="primary">Forget Password</a>
       </div>
@@ -29,10 +30,8 @@
     
       
     </mat-card>
-    <div>{{userName.errors |json}}</div>
     
 </form>
-
 <!-- 
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
