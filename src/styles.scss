@@ -42,41 +42,15 @@ background-color: whitesmoke;
 }
 
 
-// .mat-form-field-appearance-outline .mat-form-field-outline {
-//     color: black;
-//   }
-//   /* Font color */
-//   input.mat-input-element {
-//     color: black;
-//   }
-//   ::ng-deep .mat-mdc-form-field{
-//     border: black !important; 
-//   }
+.Carousel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
 
-  .toast {
-    z-index: 1050 !important; /* Ensure it appears above other elements */
-  }
-  
-  .toast-top-right {
-    top: 12px !important;
-    right: 12px !important;
-  }
-  
-  .toast-bottom-right {
-    bottom: 12px !important;
-    right: 12px !important;
-  }
-  // .custom-toast-class {
-  //   top: 20px !important;
-  //   right: 20px !important;
-  //   position: fixed !important;
-  //   z-index: 9999 !important;
-  // }
-  .toast-success {
-    background-color: #28a745 !important;
-  }
-  
-  .toast-error {
-    background-color: #dc3545 !important;
-  }
-      

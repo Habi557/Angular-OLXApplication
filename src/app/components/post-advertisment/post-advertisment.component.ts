@@ -17,7 +17,6 @@ onFileSelected(arg0: any) {
 throw new Error('Method not implemented.');
 }
   selectedFile: File ;
-  downloadURL: string | null = null;
   productForm: FormGroup;
 
   constructor(private fb: FormBuilder,private uploadimage:UploadImageService,private toaster:ToastrService) {
@@ -41,6 +40,7 @@ throw new Error('Method not implemented.');
       this.uploadimage.postAdd(this.selectedFile,this.productForm.value).subscribe({
         next:(response)=>{
           console.log(response);
+          this.productForm.reset();
           this.toaster.success("Add Posted Successfully")
         },
         error:(err)=>{

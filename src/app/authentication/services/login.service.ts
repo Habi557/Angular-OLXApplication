@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
   url: string = "http://localhost:8000/olx/user/"
-  public login(data: { id: string; password: string; }){
+  public login(data: { userName: string; password: string; }){
     return this.http.post(this.url+"authenticate", data
     ).pipe(
       catchError((err: HttpErrorResponse) => { return throwError(err)} )

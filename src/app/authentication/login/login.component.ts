@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,21 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-  constructor(private loginservice : LoginService,private router: Router,private snackBar: MatSnackBar,private toaster:ToastrService){}
+  loginForm: FormGroup;
+  constructor(private loginservice : LoginService,private router: Router,private fb: FormBuilder,private toaster:ToastrService){
+    this.loginForm = this.fb.group({
+      id: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
   data={
-    id:'',
+    userName:'',
     password:'',
     isDisable:false
   };
   login(){
-    this.loginservice.login(this.data).subscribe({
+    if(this.loginForm.valid){
+    this.loginservice.login(this.loginForm.value).subscribe({
       next:(response: any)=> {
         console.log(response)
         localStorage.setItem("token", response.token||'{}'); 
@@ -34,6 +41,7 @@ export class LoginComponent {
         
       }
     })
+  }
 
 }
 }

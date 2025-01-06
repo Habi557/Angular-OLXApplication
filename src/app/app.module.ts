@@ -56,7 +56,7 @@ import { ToastrModule } from 'ngx-toastr';
     //   MatSnackBarModule,
        HttpClientModule,
     ImportedmodulesModule,
-    ToastrModule.forRoot({positionClass: 'toast-top-right', }),
+    ToastrModule.forRoot(),
     BrowserAnimationsModule
       ],
       providers: [

@@ -39,34 +39,34 @@ export class HeaderComponent {
     postAd() {
       this.router.navigateByUrl('/postadvertisment');
     }
-    logout() {
-      localStorage.clear();
-      this.router.navigateByUrl('/login');
-    }
-    selecteItem(_t17: any) {
-    }
-
-
-    //   logout(){
-    //   let token=localStorage.getItem("token") || '{}';
-    //   this.logoutservice.logout(token).subscribe({
-    //     next:(response)=>{
-    //       console.log("logout")
-    //       console.log(response);
-    //       localStorage.clear();
-    //   console.log(localStorage.getItem('token'));
-    //   //this.router.navigateByUrl('/login');
-
-    //     },
-    //     error:(err) =>{
-    //       console.log("error")
-    //     }
-    //   }
-
-    //   )
-
-
-
+    // logout() {
+    //   localStorage.clear();
+    //   this.router.navigateByUrl('/login');
     // }
+    // selecteItem(_t17: any) {
+    // }
+
+
+      logout(){
+      let token=localStorage.getItem("token") || '{}';
+      this.logoutservice.logout(token).subscribe({
+        next:(response)=>{
+          console.log("logout")
+          console.log(response);
+          localStorage.clear();
+      console.log(localStorage.getItem('token'));
+      //this.router.navigateByUrl('/login');
+
+        },
+        error:(err) =>{
+          console.log("error")
+        }
+      }
+
+      )
+
+
+
+    }
 
   }
