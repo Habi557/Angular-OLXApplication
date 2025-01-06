@@ -11,6 +11,9 @@ import { Advertisment } from 'src/app/models/advertisment';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+selecteItem(_t16: Advertisment) {
+throw new Error('Method not implemented.');
+}
 
   searchText: string;
   filteredResults: Advertisment[] = [];
