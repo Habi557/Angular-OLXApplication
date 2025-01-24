@@ -16,3 +16,35 @@
     color: red;
     font-weight: bold;
   }
+  button.btn.btn-primary{
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  // img{
+  //   flex-grow: 1;
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  //   width: 10%;
+  //   height: auto;
+  //   object-fit: cover;
+  // }
+  .selectedImmages {
+    display: flex; /* Horizontal layout */
+    flex-wrap: wrap; /* Wrap to the next line if necessary */
+    gap: 10px; /* Space between divs */
+    justify-content: flex-start; /* Align divs to the left */
+  }
+  
+  .images {
+    flex: 0 0 auto; /* Prevent the div from shrinking too much */
+    max-width: 150px; /* Set a fixed width for each image container */
+  }
+  
+  .images img {
+    width: 100%; /* Image takes full width of its parent */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd; /* Add a border around the image */
+    border-radius: 5px; /* Round the corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  }
+  

@@ -3,11 +3,11 @@
     <!-- Content for column 1 -->
     <div class="flex-item card cursor-pointer">
       <div class="card-body p-0">
-        <img class="card-img-top" [src]="advertisment.photo" alt="Card image cap">
+        <img class="card-img-top" [src]="advertisment.photo[0].url" alt="Card image cap">
 
       </div>
     </div>
-    <div class="card">
+    <div class="card mt-1">
       <div class="card-body p-3">
         <h3>Deatils</h3>
         <div class="d-flex gap-4">
@@ -27,6 +27,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="backButton pt-1">
+      <button routerLink="/dashboard" class="btn btn-primary">Back</button>
     </div>
 
   </div>

@@ -2,7 +2,8 @@
   <h2 class="text-center mb-4">Product Form</h2>
   <div class="mb-3">
     <label for="title" class="form-label">Title:</label>
-    <input type="text" id="title" formControlName="title" class="form-control" placeholder="Enter product title" required>
+    <input type="text" id="title" formControlName="title" class="form-control" placeholder="Enter product title"
+      required>
     <small *ngIf="productForm.get('title').invalid && productForm.get('title').touched">*FirstName is Required</small>
 
   </div>
@@ -20,26 +21,32 @@
       <option value="Sports">Sports</option>
       <option value="Electronics">Electronics</option>
     </select>
-    <small *ngIf="productForm.get('category').invalid && productForm.get('category').touched">*Category is Required</small>
+    <small *ngIf="productForm.get('category').invalid && productForm.get('category').touched">*Category is
+      Required</small>
 
   </div>
 
   <div class="mb-3">
     <label for="description" class="form-label">Description:</label>
-    <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Enter description" required></textarea>
-    <small *ngIf="productForm.get('description').invalid && productForm.get('description').touched">*Description is Required</small>
+    <textarea id="description" formControlName="description" class="form-control" rows="3"
+      placeholder="Enter description" required></textarea>
+    <small *ngIf="productForm.get('description').invalid && productForm.get('description').touched">*Description is
+      Required</small>
   </div>
 
   <div class="mb-3">
     <label for="userName" class="form-label">User Name:</label>
-    <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="Enter your name" required>
-    <small *ngIf="productForm.get('userName').invalid && productForm.get('userName').touched">*Username is Required</small>
+    <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="Enter your name"
+      required>
+    <small *ngIf="productForm.get('userName').invalid && productForm.get('userName').touched">*Username is
+      Required</small>
   </div>
 
   <div class="mb-3">
     <label for="createDate" class="form-label">Create Date:</label>
     <input type="date" id="createDate" formControlName="createDate" class="form-control" required>
-    <small *ngIf="productForm.get('createDate').invalid && productForm.get('createDate').touched">*CreateDate is Required</small>
+    <small *ngIf="productForm.get('createDate').invalid && productForm.get('createDate').touched">*CreateDate is
+      Required</small>
   </div>
 
   <div class="mb-3">
@@ -54,9 +61,21 @@
 
   <div class="mb-3">
     <label for="photo" class="form-label">Photo:</label>
-    <input type="file" id="photo" formControlName="photo" class="form-control" (change)="onFileChange($event)">
+    <input type="file" id="photo" multiple="multiple" accept="image/*" class="form-control" formControlName="photo"
+      (change)="onFileChange($event)">
     <!-- <small *ngIf="productForm.get('photo').invalid && productForm.get('photo').touched">Photo is Required</small> -->
   </div>
+  <div>
+    <div class="selectedImmages">
+      <div class="images" *ngFor="let multiple of multiples">
+          <img [src]="multiple" />
+      </div>
+    </div>
+  </div>
+  <div class="buttons text-center">
+    <button routerLink="/dashboard" class="btn btn-primary">Back</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
 
-  <button type="submit" class="btn btn-primary w-100" [disabled]="!productForm.valid">Submit</button>
+  </div>
+
 </form>

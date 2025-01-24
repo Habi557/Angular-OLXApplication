@@ -1,3 +1,5 @@
+import { ImageUrl } from "./ImageUrl";
+
 export interface Advertisment {
          title : String ;
          price : Number;
@@ -6,7 +8,8 @@ export interface Advertisment {
          userName :  String ;
          createDate :Date;
          status :  String  ;
-         photo : string  ;
+         photo : ImageUrl[]  ;
          modified_Date: Date | null; 
          postedBy : String ;
+         initialImageValue:number
 }

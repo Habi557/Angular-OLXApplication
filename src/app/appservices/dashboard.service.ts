@@ -12,7 +12,9 @@ export class DashboardService {
   constructor(private http:HttpClient) { }
   private data = new BehaviorSubject<Advertisment | null>(null);
   currentData = this.data.asObservable();
-
+  private searchedAdvertisment = new BehaviorSubject<Advertisment | null>(null);
+  searchedAdvertismentObservable = this.searchedAdvertisment.asObservable();
+  
   public getAllAdvertisements(pageNo:number){
     //const params = new HttpParams().set('pageNo', Number(localStorage.getItem("pageNo")!));
     const params = new HttpParams().set('pageNo', pageNo);
@@ -43,6 +45,9 @@ export class DashboardService {
     const params = new HttpParams()
       .set('searchText', word);
     return this.http.get(ApplicationUrls.apiUrl+'advertise/search',{params});
+  }
+  KeywordSearchselecteItem(advertisment: Advertisment) {
+    this.searchedAdvertisment.next(advertisment);
   }
 
 }

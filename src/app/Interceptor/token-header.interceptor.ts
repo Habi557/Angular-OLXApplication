@@ -14,7 +14,7 @@ export class TokenHeaderInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
       // List of URLs to exclude
-      const excludedUrls = ['/postadvertise'];
+      const excludedUrls = ['/postadvertise','/logout'];
 
       // Check if the request URL matches an excluded URL
       const isExcluded = excludedUrls.some(url => req.url.includes(url));
@@ -26,7 +26,7 @@ export class TokenHeaderInterceptor implements HttpInterceptor {
       }
     const modifiedReq = req.clone({
       setHeaders: {
-        Authorization:`${localStorage.getItem("token")}`, // Example: Authorization header
+        Authorization: `${localStorage.getItem("token")}`, // Example: Authorization header
         'Content-Type': 'application/json',     // Example: Default content type
       },
     });

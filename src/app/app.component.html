@@ -3,6 +3,7 @@
         *ngIf="!(route.url=== '/login' || ((route.url)=== '/') || ((route.url)=== '/forgetpassword'))"></app-header>
 </div>
 <div class="main-content">
+    <app-loader></app-loader>
     <router-outlet></router-outlet>
     
 </div>

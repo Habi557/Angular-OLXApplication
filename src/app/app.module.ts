@@ -29,6 +29,7 @@ import { TokenHeaderInterceptor } from './Interceptor/token-header.interceptor';
 import { OpenAdvertismentComponent } from './components/open-advertisment/open-advertisment.component';
 import { PostAdvertismentComponent } from './components/post-advertisment/post-advertisment.component';
 import { ToastrModule } from 'ngx-toastr';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
     ForgetPasswordComponent,
     DashboardComponent,
     OpenAdvertismentComponent,
-    PostAdvertismentComponent
+    PostAdvertismentComponent,
+    LoaderComponent
       ],
   imports: [
     BrowserModule,

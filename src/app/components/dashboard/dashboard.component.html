@@ -2,9 +2,9 @@
 <h1>Dashboard</h1>
 <div class="flex-container">
     <div class="flex-item card cursor-pointer"  *ngFor="let result of listOfAdvertisments" (click)="iteamClicked(result)">
-      <button class="Carousel prev">&lt;</button> 
-      <img class="card-img-top" [src]="result.photo" alt="Card image cap">
-      <button class="Carousel next">&gt;</button>
+      <button class="Carousel prev" (click)="photoBack(result,$event)" [disabled]="result.initialImageValue==0">&lt;</button> 
+      <img class="card-img-top" [src]="(result.photo[result.initialImageValue].url)" alt="Card image cap">
+      <button class="Carousel next"(click)="photoForward(result,$event)" [disabled]="result.initialImageValue>=result.photo.length-1">&gt;</button>
                   <!-- <img class="card-img-top" [src]="result.photo!=null ? 'data:image/jpg;base64,'+result.photo:'https://i.imgur.com/26NFGVH.jpeg'" alt="Dynamic Image"> -->
         <div class="card-body">
           <h3>&#8377;{{result.price}}</h3>

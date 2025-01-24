@@ -1,7 +1,9 @@
 import { Component, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from 'src/app/appservices/dashboard.service';
+import { TimerToasterService } from 'src/app/appservices/timer-toaster.service';
 import { LogoutService } from 'src/app/authentication/services/logout.service';
 import { Advertisment } from 'src/app/models/advertisment';
 
@@ -11,16 +13,15 @@ import { Advertisment } from 'src/app/models/advertisment';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-selecteItem(_t16: Advertisment) {
-throw new Error('Method not implemented.');
-}
+
 
   searchText: string;
   filteredResults: Advertisment[] = [];
-  constructor(private router: Router, private logoutservice: LogoutService, private dashboardService: DashboardService) { }
+  constructor(private router: Router, private logoutservice: LogoutService, private dashboardService: DashboardService,private timerToasterService:TimerToasterService) { }
   keywordSearch(word: string) {
     if (this.searchText == '') {
       this.filteredResults = [];
+      this.dashboardService.KeywordSearchselecteItem(null);
     }
       if (word.length > 2) {
         this.dashboardService.keywordSearch(word).subscribe({
@@ -48,23 +49,23 @@ throw new Error('Method not implemented.');
     // }
     // selecteItem(_t17: any) {
     // }
-
-
-    
-
       logout(){
       let token=localStorage.getItem("token") || '{}';
       this.logoutservice.logout(token).subscribe({
         next:(response)=>{
-          console.log("logout")
-          console.log(response);
           localStorage.clear();
-      console.log(localStorage.getItem('token'));
-      //this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/login');
 
         },
         error:(err) =>{
-          console.log("error")
+          console.log("error from logout");
+          console.log(err.error.error)
+            console.log(err);
+          
+          this.timerToasterService.showToastWithTimer(err.error.error,5);
+       
+
+          
         }
       }
 
@@ -72,6 +73,10 @@ throw new Error('Method not implemented.');
 
 
 
+    }
+    KeywordSearchselecteItem(advertisment: Advertisment) {
+      this.filteredResults=[];
+      this.dashboardService.KeywordSearchselecteItem(advertisment);
     }
 
   }
