@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem("pageNo", pageNo.toString()); */
     this.activateRoute.queryParamMap.subscribe(params => {
       this.pageNo = params.get('pageNo') ? +params.get('pageNo')! : 0; // Default to 0
+      const token = params.get('token');
+      token ? localStorage.setItem("token", token) : null;
       console.log(this.pageNo);
 
     })

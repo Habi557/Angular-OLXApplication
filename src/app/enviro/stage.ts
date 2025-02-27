@@ -1,5 +1,7 @@
 export class ApplicationUrls{
     static apiUrl:string="http://localhost:9000/olx/advertisement/";
+    static apilogin:string="http://localhost:8082/olx/user/";
+    static olxMasterData:string="http://localhost:9001/advertise/"
    // mongod --dbpath /Users/habi/Documents/MongodbData/data/db
     static firebaseConfig = {
         apiKey: "AIzaSyDbucAJKWA3Xl_bIx-0v3HFhJLPnI0WM08",

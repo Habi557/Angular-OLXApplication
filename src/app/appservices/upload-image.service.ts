@@ -12,7 +12,6 @@ import { Advertisment } from '../models/advertisment';
   providedIn: 'root'
 })
 export class UploadImageService {
-
   //storage: Storage = inject(Storage);
   //storage = getStorage();
   //  firestore = getFirestore();
@@ -35,10 +34,9 @@ export class UploadImageService {
   
   //
   }
-
-  getAdvertismentById() {
-
-  }
+  getAllCategorys() {
+    return this.http.get(ApplicationUrls.olxMasterData+'category');
+ }
 
 
 

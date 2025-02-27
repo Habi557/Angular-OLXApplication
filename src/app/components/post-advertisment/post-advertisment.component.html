@@ -16,10 +16,10 @@
 
   <div class="mb-3">
     <label for="category" class="form-label">Category:</label>
-    <select id="category" formControlName="category" class="form-select" required>
-      <option value="Traveling">Traveling</option>
-      <option value="Sports">Sports</option>
-      <option value="Electronics">Electronics</option>
+    <select id="category" formControlName="category" class="form-select"  required>
+      <option *ngFor="let category of categoryList" [value]="category.category"> {{ category.category }}</option>
+      <!-- <option value="Sports">Sports</option>
+      <option value="Electronics">Electronics</option> -->
     </select>
     <small *ngIf="productForm.get('category').invalid && productForm.get('category').touched">*Category is
       Required</small>

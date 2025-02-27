@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,9 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   loginForm: FormGroup;
-  constructor(private loginservice : LoginService,private router: Router,private fb: FormBuilder,private toaster:ToastrService){
+  googleOAuth2Login:boolean=false;
+  constructor(private loginservice : LoginService,private router: Router,private fb: FormBuilder,private toaster:ToastrService,private route: ActivatedRoute){
     this.loginForm = this.fb.group({
       id: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
@@ -24,6 +25,13 @@ export class LoginComponent {
     password:'',
     isDisable:false
   };
+  ngOnInit(): void {
+    if(this.googleLogin){
+      this.route.queryParamMap.subscribe(params => {
+         localStorage.setItem("token", params.get('token')||'{}'); 
+              });
+    }
+  }
   login(){
     if(this.loginForm.valid){
     this.loginservice.login(this.loginForm.value).subscribe({
@@ -43,5 +51,19 @@ export class LoginComponent {
     })
   }
 
+}
+googleLogin() {
+//   this.loginservice.googleLogin().subscribe({
+//     next:(res)=>{
+//       console.log(res)
+//     },
+//     error:(err)=>{
+//       console.log(err);
+      
+//     }
+//   })
+const oauth2Url = 'http://localhost:8082/oauth2/authorization/google';
+window.location.href = oauth2Url; // Redirect the user to the backend OAuth2 URL
+this.googleOAuth2Login=true;
 }
 }

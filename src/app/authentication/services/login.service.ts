@@ -7,11 +7,8 @@ import { Observable, catchError, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
- 
-  
-
   constructor(private http: HttpClient) { }
-  url: string = "http://localhost:8000/olx/user/"
+  url: string = "http://localhost:8082/olx/user/"
   public login(data: { userName: string; password: string; }){
     return this.http.post(this.url+"authenticate", data
     ).pipe(
@@ -28,5 +25,8 @@ export class LoginService {
  return this.http.get(this.url+'verifyotp/'+otp+'/'+email).pipe(
   catchError((err: HttpErrorResponse)=> throwError(err))
  )
+  }
+  googleLogin() {
+    return this.http.get("http://localhost:8082/oauth2/authorization/google");
   }
 }

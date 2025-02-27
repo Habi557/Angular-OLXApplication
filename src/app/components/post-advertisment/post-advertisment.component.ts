@@ -13,10 +13,8 @@ import { LoaderService } from 'src/app/appservices/loader.service';
   templateUrl: './post-advertisment.component.html',
   styleUrls: ['./post-advertisment.component.scss']
 })
-export class PostAdvertismentComponent {
-  onFileSelected(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
+export class PostAdvertismentComponent implements OnInit {
+  categoryList: any[];
   selectedFile: File;
   productForm: FormGroup;
   listOfImages: File[] = [];
@@ -38,6 +36,18 @@ export class PostAdvertismentComponent {
       modified_Date: [null], // Set default value to null for Date
       postedBy: ['']
     });
+  }
+  ngOnInit(): void {
+    this.uploadimage.getAllCategorys().subscribe({
+      next:(response:any)=>{
+        console.log(response);
+        
+           this.categoryList=response;
+      },
+      error:(err)=> {
+        this.toaster.error("Failed loading the  Categorys");
+      }
+    })
   }
 
   postAdd() {
