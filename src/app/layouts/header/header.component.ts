@@ -1,7 +1,8 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/appservices/cart.service';
 import { DashboardService } from 'src/app/appservices/dashboard.service';
 import { TimerToasterService } from 'src/app/appservices/timer-toaster.service';
 import { LogoutService } from 'src/app/authentication/services/logout.service';
@@ -12,12 +13,18 @@ import { Advertisment } from 'src/app/models/advertisment';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
-
+ cartCount: Advertisment[]=[];
   searchText: string;
   filteredResults: Advertisment[] = [];
-  constructor(private router: Router, private logoutservice: LogoutService, private dashboardService: DashboardService,private timerToasterService:TimerToasterService) { }
+  constructor(private router: Router, private logoutservice: LogoutService, private dashboardService: DashboardService,private timerToasterService:TimerToasterService,private cartService : CartService) { }
+  ngOnInit(): void {
+    console.log("test header");
+    this.cartList();
+
+  
+  }
   keywordSearch(word: string) {
     if (this.searchText == '') {
       this.filteredResults = [];
@@ -77,6 +84,17 @@ export class HeaderComponent {
     KeywordSearchselecteItem(advertisment: Advertisment) {
       this.filteredResults=[];
       this.dashboardService.KeywordSearchselecteItem(advertisment);
+    }
+    cartList(){
+      this.cartService.cartAddedIteamsObservables.subscribe({
+        next:(resp: Advertisment)=>{
+         if(resp != null){
+          this.cartCount.push(resp);
+         }
+         
+        }
+    })
+      
     }
 
   }

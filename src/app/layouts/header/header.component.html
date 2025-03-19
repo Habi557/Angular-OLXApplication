@@ -1,25 +1,3 @@
-<!-- <div class="d-flex justify-content-center">
-
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/dashboard">Advertisement</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="dashboard/post" routerLinkActive="active">Post Advertisement</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="dashboard/alladvertisment">Show All Advertisement</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="" (click)="logout()">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>  -->
 <nav class="navbar">
   <div class="navbar-brand">
     <a routerLink="/">OLX</a>
@@ -36,29 +14,6 @@
     </ul>
   
   </div>
-
-  <!-- Location Selector -->
-  <!-- <div class="navbar-location">
-    <input
-      type="text"
-      placeholder="Enter location"
-      [(ngModel)]="location"
-    />
-    <button (click)="onLocationSelect()">
-      <i class="material-icons">location_on</i>
-    </button>
-  </div> -->
-
-  <!-- Category Dropdown -->
-  <!-- <div class="navbar-links">
-    <select [(ngModel)]="selectedCategory">
-      <option value="" disabled>Select Category</option>
-      <option *ngFor="let category of categories" [value]="category">
-        {{ category }}
-      </option>
-    </select>
-  </div> -->
-
   <!-- Authentication Links -->
   <div class="navbar-actions">
     <!-- <div *ngIf="isLoggedIn" class="user-menu">
@@ -74,6 +29,11 @@
     </div> -->
 
     <!-- Post Ad Button -->
+    <button mat-icon-button [matBadge]="cartCount.length" matBadgeColor="accent">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    
+    
     <button class="post-ad-btn" (click)="postAd()">Post Ad</button>
     <button class="post-ad-btn" (click)="logout()">Logout</button>
 

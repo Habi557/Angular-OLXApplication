@@ -30,6 +30,7 @@ import { OpenAdvertismentComponent } from './components/open-advertisment/open-a
 import { PostAdvertismentComponent } from './components/post-advertisment/post-advertisment.component';
 import { ToastrModule } from 'ngx-toastr';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ResetpasswordComponent } from './authentication/resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     DashboardComponent,
     OpenAdvertismentComponent,
     PostAdvertismentComponent,
-    LoaderComponent
+    LoaderComponent,
+    ResetpasswordComponent
       ],
   imports: [
     BrowserModule,

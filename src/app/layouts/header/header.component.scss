@@ -155,5 +155,33 @@
   .dropdown li:hover {
     background: #f0f0f0;
   }
+
+
+  //cart button
+  .cart-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cart-container button {
+    font-size: 30px; /* Adjust icon size */
+    color: #333; /* Change color if needed */
+  }
+  
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+  }
+  
   
   

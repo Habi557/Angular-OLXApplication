@@ -16,7 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
  import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
  import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-
+ import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [],
@@ -33,7 +33,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       MatToolbarModule,
       MatListModule,
       MatDialogModule,
-      MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      MatBadgeModule
   ],
   exports:[CommonModule,
     FormsModule,
@@ -48,7 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       MatSidenavModule,
       MatListModule,
       MatDialogModule,
-      MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      MatBadgeModule
     ]
 })
 export class ImportedmodulesModule { }

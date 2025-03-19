@@ -4,6 +4,7 @@ import { ApplicationUrls } from '../enviro/stage';
 import { BehaviorSubject } from 'rxjs';
 import { Advertisment } from '../models/advertisment';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,14 @@ export class DashboardService {
   currentData = this.data.asObservable();
   private searchedAdvertisment = new BehaviorSubject<Advertisment | null>(null);
   searchedAdvertismentObservable = this.searchedAdvertisment.asObservable();
+  private cartCount = new BehaviorSubject<number>(0);
+   cartCountObservable=this.cartCount.asObservable();
   
   public getAllAdvertisements(pageNo:number){
     //const params = new HttpParams().set('pageNo', Number(localStorage.getItem("pageNo")!));
     const params = new HttpParams().set('pageNo', pageNo);
 
-      return this.http.get(ApplicationUrls.apiUrl+`user/advertise?pageNo=${pageNo}`);
+      return this.http.get(environment.apiUrl+`advertisement/user/advertise?pageNo=${pageNo}`);
   }
   public getAdvertismentPageNoCount(){
     return localStorage.getItem("pageNo");
@@ -44,10 +47,14 @@ export class DashboardService {
   keywordSearch(word: string) {
     const params = new HttpParams()
       .set('searchText', word);
-    return this.http.get(ApplicationUrls.apiUrl+'advertise/search',{params});
+    return this.http.get(environment.apiUrl+'advertisement/advertise/search',{params});
   }
   KeywordSearchselecteItem(advertisment: Advertisment) {
     this.searchedAdvertisment.next(advertisment);
+  }
+  addToCart(count : number){
+    //this.cartCount.next()
+    this.cartCount.next(count);
   }
 
 }

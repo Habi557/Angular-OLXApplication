@@ -7,6 +7,7 @@ import { ForgetPasswordComponent } from './authentication/forget-password/forget
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OpenAdvertismentComponent } from './components/open-advertisment/open-advertisment.component';
 import { PostAdvertismentComponent } from './components/post-advertisment/post-advertisment.component';
+import { ResetpasswordComponent } from './authentication/resetpassword/resetpassword.component';
 const routes: Routes = [
   {
     path:'login',component:LoginComponent
@@ -23,8 +24,9 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,canActivate:[LoginGuard]},
   {path:'postadvertisment',component:PostAdvertismentComponent,canActivate:[LoginGuard]},
 
-  {path:'opencomponent',component:OpenAdvertismentComponent,canActivate:[LoginGuard]}
+  {path:'opencomponent',component:OpenAdvertismentComponent,canActivate:[LoginGuard]},
   //{ path: 'dashboard', loadChildren: () => import('./pages/modules/dashboard/dashboard.module').then((m) => m.DashboardModule),canActivate:[LoginGuard] }
+{path:'resetpassword',component:ResetpasswordComponent}
 ];
 
 @NgModule({

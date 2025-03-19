@@ -23,6 +23,8 @@ export class TokenHeaderInterceptor implements HttpInterceptor {
         // Pass the request without modifying it
         console.log("request not modified");
         return next.handle(req);
+      }else{
+        console.log("request modified");
       }
     const modifiedReq = req.clone({
       setHeaders: {

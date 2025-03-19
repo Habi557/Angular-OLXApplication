@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CartService } from 'src/app/appservices/cart.service';
 import { DashboardService } from 'src/app/appservices/dashboard.service';
 import { Advertisment } from 'src/app/models/advertisment';
 
@@ -8,7 +9,7 @@ import { Advertisment } from 'src/app/models/advertisment';
   styleUrls: ['./open-advertisment.component.scss']
 })
 export class OpenAdvertismentComponent implements OnInit{
-constructor(private dashboardServide:DashboardService){}
+constructor(private dashboardServide:DashboardService,private cartService : CartService){}
   advertisment:Advertisment;
   ngOnInit(): void {
       this.dashboardServide.currentData.subscribe({
@@ -34,6 +35,10 @@ constructor(private dashboardServide:DashboardService){}
 
       }
      
+  }
+  addToCart(){
+   // this.dashboardServide.addToCart(1);
+    this.cartService.addToCart(this.advertisment);
   }
 
 }

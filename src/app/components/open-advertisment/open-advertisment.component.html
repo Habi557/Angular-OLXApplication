@@ -28,8 +28,14 @@
         </div>
       </div>
     </div>
-    <div class="backButton pt-1">
-      <button routerLink="/dashboard" class="btn btn-primary">Back</button>
+    <div class="backButton pt-1 d-flex gap-3">
+      <div class="backButton">
+        <button routerLink="/dashboard" class="btn btn-primary">Back</button>
+      </div>
+      <div class="addToCartButton">
+        <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+      </div>
+     
     </div>
 
   </div>

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ApplicationUrls } from 'src/app/enviro/stage';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,9 @@ export class LogoutService {
 
   public logout(token : string){
    let headers= new HttpHeaders({'Authorization': "Bearer " + token});
-   // let headers= new HttpHeaders();
-
     headers=headers.set("Authorization","Bearer " + token);
    console.log("logoutservice")
-    return this.http.delete(ApplicationUrls.apilogin+"logout",{headers:headers} ).pipe(catchError((err: HttpErrorResponse) => throwError(err)));
+    return this.http.delete(environment.apiUrl+"user/logout",{headers:headers} ).pipe(catchError((err: HttpErrorResponse) => throwError(err)));
   }
 
 }

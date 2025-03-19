@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
 import { ApplicationUrls } from '../enviro/stage';
 import { Advertisment } from '../models/advertisment';
+import { environment } from 'src/environments/environment.development';
 
 
 
@@ -30,7 +31,9 @@ export class UploadImageService {
     const headers = new HttpHeaders({
       Authorization: `${localStorage.getItem("token")}`
     });
-    return this.http.post(ApplicationUrls.apiUrl + 'postadvertise', uploadData, { headers });
+    // let headers= new HttpHeaders();
+    // headers=headers.set("Authorization","Bearer " + `${localStorage.getItem("token")}`);
+    return this.http.post(environment.apiUrl + 'advertisement/postadvertise', uploadData, { headers });
   
   //
   }
